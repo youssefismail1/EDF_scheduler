@@ -249,16 +249,18 @@ int main( void )
                     "Butt_1_Monitor",          /* Text name for the task. */
                     100,      /* Stack size in words, not bytes. */
                     ( void * ) 0,    /* Parameter passed into the task. */
-                    2,/* Priority at which the task is created. */
-                    &Butt_1_Monitor_Handler );      /* Used to pass out the created task's handle. */
+                    1,/* Priority at which the task is created. */
+                    &Butt_1_Monitor_Handler,
+                    50 );      /* Used to pass out the created task's handle. */
 										
 			 xTaskPeriodicCreate(
                    Butt_2_Monitor,       /* Function that implements the task. */
                     "Butt_2_Monitor",          /* Text name for the task. */
                     100,      /* Stack size in words, not bytes. */
                     ( void * ) 0,    /* Parameter passed into the task. */
-                    2,/* Priority at which the task is created. */
-                    &Butt_2_Monitor_Handler );      /* Used to pass out the created task's handle. */
+                    1,/* Priority at which the task is created. */
+                    &Butt_2_Monitor_Handler, 
+                     50);      /* Used to pass out the created task's handle. */
 										
 				 xTaskPeriodicCreate(
                     Periodic_Transmitter,       /* Function that implements the task. */
@@ -266,23 +268,26 @@ int main( void )
                    100,      /* Stack size in words, not bytes. */
                    ( void * ) 0,    /* Parameter passed into the task. */
                     1,/* Priority at which the task is created. */
-                    &Periodic_Transmitter_Handler );      /* Used to pass out the created task's handle. */
+                    &Periodic_Transmitter_Handler,
+                    100 );      /* Used to pass out the created task's handle. */
 										
 					 xTaskPeriodicCreate(
                     Uart_Receiver,       /* Function that implements the task. */
                     "Uart_Receiver",          /* Text name for the task. */
                     100,      /* Stack size in words, not bytes. */
                     ( void * ) 0,    /* Parameter passed into the task. */
-                    3,/* Priority at which the task is created. */
-                    &Uart_Receiver_Handler );      /* Used to pass out the created task's handle. */
+                    1,/* Priority at which the task is created. */
+                    &Uart_Receiver_Handler,
+                     20 );      /* Used to pass out the created task's handle. */
 										
 						 xTaskPeriodicCreate(
                     Load_1_Simulation,       /* Function that implements the task. */
                    "Load_1_Simulation",          /* Text name for the task. */
                    100,      /* Stack size in words, not bytes. */
                     ( void * ) 0,    /* Parameter passed into the task. */
-                    4,/* Priority at which the task is created. */
-                    &Load_1_Simulation_Handler );      /* Used to pass out the created task's handle. */
+                    1,/* Priority at which the task is created. */
+                    &Load_1_Simulation_Handler,
+                     10 );      /* Used to pass out the created task's handle. */
 
 						 xTaskPeriodicCreate(
                     Load_2_Simulation,       /* Function that implements the task. */
@@ -290,7 +295,8 @@ int main( void )
                     100,      /* Stack size in words, not bytes. */
                     ( void * ) 0,    /* Parameter passed into the task. */
                      1,/* Priority at which the task is created. */
-                    &Load_2_Simulation_Handler );      /* Used to pass out the created task's handle. */	
+                    &Load_2_Simulation_Handler,
+                     100 );      /* Used to pass out the created task's handle. */	
    /****Create Queue***********/
    xQueue1 = xQueueCreate( 10, 25 );										
 
